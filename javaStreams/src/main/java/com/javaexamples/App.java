@@ -31,13 +31,14 @@ public class App
     }
 
     private Map<Integer, List<Object>> inputData() {
-        String fileLocation = "src/main/resources/Barcelona_trip_expenses.xlsx";
+        String fileLocation = "javaStreams/src/main/resources/Barcelona_trip_expenses.xlsx";
         FileInputStream file = null;
         Workbook workbook = null;
         try  {
             file = new FileInputStream(new File(fileLocation)) ;
             workbook = new XSSFWorkbook(file);
         } catch (IOException e) {
+            e.printStackTrace();
             LOG.info(e);
         }
 
