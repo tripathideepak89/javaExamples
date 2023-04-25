@@ -32,7 +32,11 @@ public class TransactionProcess {
         return this.transactionList;
     }
 
-    public Map<String, Double> getTotalValue(){
+    public Map<String, Double> getTotalValueByCategory(){
         return transactionList.stream().collect(Collectors.groupingBy(Transaction::getType, Collectors.summingDouble(Transaction::getValue)));
+    }
+
+    public double getTotalValue(){
+        return transactionList.stream().mapToDouble(Transaction::getValue).sum();
     }
 }

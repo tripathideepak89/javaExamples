@@ -72,10 +72,15 @@ public class App
         TransactionProcess transactionProcess = new TransactionProcess();
         transactionProcess = createTransactionList(transactionProcess, data);        
         printTransactions(transactionProcess);
+        getTotalValue(transactionProcess);
         getTransactionTotalByCategory(transactionProcess);
         searchTransaction(transactionProcess, 10);        
     }
 
+
+    private void getTotalValue(TransactionProcess transactionProcess) {
+        System.out.println("Total Expenditure :" + transactionProcess.getTotalValue());
+    }
 
     private void searchTransaction(TransactionProcess transactionProcess, Integer id) {
         transactionProcess.getTransaction(id).ifPresent(System.out::println);
@@ -83,7 +88,7 @@ public class App
 
 
     private void getTransactionTotalByCategory(TransactionProcess transactionProcess) {
-        transactionProcess.getTotalValue().forEach((key, value) -> System.out.println(key + " : " + value));
+        transactionProcess.getTotalValueByCategory().forEach((key, value) -> System.out.println(key + " : " + value));
     }
 
 
